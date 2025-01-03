@@ -29,9 +29,13 @@ export const authOptions =NextAuth( {
         await connectDb()
         const currentUser= await User.findOne({email:user.email})
         if(!currentUser){
+          const name=user.name.split(/[\s-]+/)[0]
+          const u= await User.findOne({username:name})
+          if(u)
+            name=`${name}${Math.floor(1 + Math.random() * 99)}`
           await User.create(
           {
-            username:user.name.split(/[\s-]+/)[0],
+            username:name,
             email:user.email,
             profilepic:user.image,
           }
