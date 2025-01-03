@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { notFound } from "next/navigation"
 import { fetchPayments, initiate, fetchUser } from "@/actions/useractions";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import Script from "next/script";
@@ -87,8 +86,9 @@ const Paymentpage = ({ username }) => {
     var rzp1 = new Razorpay(options);
     rzp1.open();
   };
-
+ 
   return (
+     {currentUser.username ?(
     <>
       <ToastContainer
         position="top-right"
@@ -218,6 +218,11 @@ const Paymentpage = ({ username }) => {
         </div>
       </div>
     </>
+):(
+<div class="flex items-center justify-center h-screen">
+  <p class="text-center">Not found</p> 
+  </div>
+)}
   );
 };
 
