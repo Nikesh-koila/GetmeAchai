@@ -1,6 +1,5 @@
 import React from "react";
 import Paymentpage from "@/components/Paymentpage";
-import { notFound } from "next/navigation"
 import connectDb from "@/db/dbConnect";
 import User from "@/models/User";
 const Username = async ({ params }) => {
