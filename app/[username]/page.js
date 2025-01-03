@@ -6,7 +6,7 @@ import User from "@/models/User";
 const Username = async ({ params }) => {
   const a=await params
   const username = a.username;
- const u= await User.findOne({"username":username})
+ const u= await User.findOne({"username":username}).select("username")
   if(!u){
      return notFound();
   }
