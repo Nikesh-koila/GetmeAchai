@@ -42,10 +42,6 @@ const Paymentpage = ({ username }) => {
 
   const getData = async () => {
     let u = await fetchUser(username);
-if(!u){
-     return notFound();
-  }
-    
     setCurrentUser(u);
 
     let dbPayments = await fetchPayments(username);
