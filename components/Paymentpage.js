@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+import { notFound } from "next/navigation"
 import { fetchPayments, initiate, fetchUser } from "@/actions/useractions";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import Script from "next/script";
@@ -42,9 +42,10 @@ const Paymentpage = ({ username }) => {
 
   const getData = async () => {
     let u = await fetchUser(username);
-
+if(!u){
+     return notFound();
+  }
     
-
     setCurrentUser(u);
 
     let dbPayments = await fetchPayments(username);
